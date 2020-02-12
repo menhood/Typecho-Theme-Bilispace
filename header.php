@@ -50,7 +50,7 @@
         <div class="navbox">
                 
                 <nav id="nav-menu" class="nav" role="navigation">
-                    <a href="http://menhood.wang" title="导航页" ><img class="smalllogo" src="<?php $this->options->logoUrl() ?>" /></a>
+                    <a href="/" title="导航页" ><img class="smalllogo" src="<?php $this->options->logoUrl() ?>" /></a>
                     <a<?php if($this->is('index')): ?> class="current"<?php endif; ?> href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
                     <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                     <?php while($pages->next()): ?>
