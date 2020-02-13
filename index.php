@@ -25,7 +25,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 	        <?php if ($this->fields->thumb): ?>
 	        <?php $this->fields->thumb();?>
 	        <?php else:?>
-	        https://img.menhood.wang/i/2020/02/11/krwtlq.jpg
+	        https://img.menhood.wang/i/2020/02/13/maapxg.gif
 	        <?php endif;?>" />
 	        </div>
 	        </a>
