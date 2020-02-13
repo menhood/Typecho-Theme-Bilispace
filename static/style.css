@@ -84,11 +84,12 @@ pre {
     overflow:hidden;
 }
 code, pre {
-    color: #e96900;
+    color: #C13;
     margin: 0 2px;
     border-radius: 2px;
     font-family:"Roboto Mono", Monaco, courier, monospace;
-    background-color: #f8f8f8;
+    font-weight: 600;
+    background-color: #F0F0EC;
     -webkit-font-smoothing: initial;
     -moz-osx-font-smoothing: initial;
 }
@@ -147,7 +148,7 @@ p.danger:before {
 p.danger:before, p.tip:before, p.warning:before {
     content:"!";
     position: absolute;
-    top: 14px;
+    top: 18px;
     left: -12px;
     color: #fff;
     width: 20px;
@@ -257,7 +258,7 @@ p.danger, p.tip, p.warning {
     height: 200px;
     margin: 0 auto;
     position: relative;
-    /*background-image: url('https://img.menhood.wang/i/2020/02/12/hd67im.png');*/
+    /*background-image: url('https://ddns.menhood.wang:2000/images/201902/bbd0b247711acec3.png');*/
     background: #d2e9fb;
 }
 .site-name {
@@ -329,6 +330,9 @@ p.danger, p.tip, p.warning {
     padding: 30px;
     float: right;
     max-width: 750px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .noticetext {
     font-size: 13px;
@@ -521,6 +525,29 @@ p.danger, p.tip, p.warning {
     line-height: 20px;
     -webkit-transition: .3s;
     transition: .3s;
+}
+.tags-list {
+    position: relative;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.tags-list a {
+    float: left;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin: 4px;
+    height: 22px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    border-radius: 100px;
+    line-height: 20px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+.tags-list a:hover {
+    color:#00a1d6;
+    border: 1px solid #00a1d6;
 }
 .post-near {
     padding: 0;
