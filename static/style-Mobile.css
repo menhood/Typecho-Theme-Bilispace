@@ -155,7 +155,7 @@ p.danger, p.tip, p.warning {
     background-color: #fb7299;
     height: 36px;
     width: 100%;
-	padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 .search {
     float: right;
@@ -218,7 +218,7 @@ p.danger, p.tip, p.warning {
     border: 1px solid #00a1d6;
 }
 .current {
-    border-bottom: 2px solid #fff;
+    /*border-bottom: 2px solid #fff;*/
 }
 .nav {
     position: relative;
@@ -451,12 +451,12 @@ p.danger, p.tip, p.warning {
 }
 .post-title {
     margin: 10px 0 0 0;
-    padding-bottom: 0.7em;
     border-bottom: 1px solid #ddd;
 }
 .post-meta {
     float: left;
     margin:4px 7px 8px 8px;
+    padding: 0;
     display: inline;
     font-size: 12px;
     color: #888;
@@ -471,7 +471,7 @@ p.danger, p.tip, p.warning {
 .post-content p {
     word-wrap:break-word;
     line-height: 1.6em;
-    margin: 1.2em 0 -1.2em;
+    margin: 1.2em 0 0;
     padding-bottom: 1.2em;
     position: relative;
     z-index: 1;
@@ -481,6 +481,7 @@ p.danger, p.tip, p.warning {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #34495e;
+    margin-block-start: 1.8em;
 }
 .post-content p img {
     max-height: 800px;
@@ -488,6 +489,7 @@ p.danger, p.tip, p.warning {
 }
 .page-navigator {
     overflow: hidden;
+    padding: 0;
 }
 .page-navigator li {
     float: left;
@@ -546,14 +548,22 @@ p.danger, p.tip, p.warning {
     transition: .3s;
 }
 .post-near {
+    display: none;
     padding: 0;
+    position: fixed;
+    bottom: 55px;
+    z-index: 3;
+    width: 100%;
 }
 .post-near li {
     padding: 8px;
     background: #fff;
     border-radius: 4px;
     border: 1px solid #ddd;
-    max-width: 40%;
+    width: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .post-near li:hover {
     background-color: #00a1d6;
@@ -710,7 +720,7 @@ p.danger, p.tip, p.warning {
     position: relative;
 }
 .guest-info {
-    margin: 0 0 0 65px;
+    margin: 0 0 0 55px;
 }
 .guest-info input:focus {
     width: 200px!important;
@@ -720,7 +730,7 @@ p.danger, p.tip, p.warning {
 }
 .user-face {
     float: left;
-    margin: 7px 7px 0 5px;
+    margin: 7px 7px 0 0px;
     position: absolute;
     cursor: pointer;
 }
@@ -732,6 +742,7 @@ p.danger, p.tip, p.warning {
 .required {
 }
 .preview-box{
+    display: none;
     font-size: 12px;
     box-sizing: border-box;
     background-color: rgb(244, 245, 247);
@@ -741,7 +752,7 @@ p.danger, p.tip, p.warning {
     max-width: 82%;
     transition: all 0s ease 0s;
     padding: 5px 10px;
-    margin: 10px 0px 10px 65px;
+    margin: 10px 0px 10px 0px;
     line-height: normal;
     position: relative;
     /* width: 100% !important; */
