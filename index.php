@@ -91,6 +91,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </ul>
     </article>
 <?php endwhile; ?>
+<?php $this->pageNav('前一页', '后一页'); ?>
 <?php endif; ?>
 <?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>
