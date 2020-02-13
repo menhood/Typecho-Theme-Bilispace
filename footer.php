@@ -55,20 +55,18 @@
     
     <a href="<?php $this->options->adminUrl('login.php'); ?>" >&copy; </a>2017-<?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
     <?php _e('由 <a href="http://www.typecho.org">Typecho</a> 强力驱动'); ?>. &emsp;
-    <span id="bottom_links" style="font-size:12px">
+    <p><span id="bottom_links" style="font-size:12px">
     |&nbsp;<a href="<?php $this->options->feedUrl(); ?>"><?php _e('文章 RSS'); ?></a>
     |&nbsp;<a href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论 RSS'); ?></a>
     |&nbsp;当前在线：<span id="online"></span>
     |
     <script src="https://api.menhood.wang/online/index.php?url=<?php echo $this->options->rootUrl;?>"></script>
     <script>document.getElementById('online').innerHTML=c_online;</script>
-    </span>
+    </span></p>
 </footer><!-- end #footer -->
 <?php if(isMobile()): ?><div style="width:100%;height:80px"></div><?php endif;?>
 <!--统计代码-->
 <script>
-//请自行删除注释符并替换src
-/*
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -76,7 +74,6 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-*/
 </script>
 
 <?php $this->footer(); ?>
