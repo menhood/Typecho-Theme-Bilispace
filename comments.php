@@ -105,8 +105,7 @@
                     ?>" value="<?php $this->remember('url');
                     ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif;
                     ?> />
-                    
-                    <input type="button" name="preview" id="preview" class="preview" onclick="acpreview()" value="预览" />
+                    <div id="preview-box" class="preview-box" ></div>
             </div>
             <?php endif;
             ?>
@@ -115,7 +114,7 @@
                     else :_e('https://i.loli.net/2018/10/28/5bd55579d2d72.png')?><?php endif;
                     ?>">
                 </div>
-                <div id="preview-box" class="preview-box" ></div>
+                
                 <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required><?php $this->remember('text');
                     ?></textarea>
                     
