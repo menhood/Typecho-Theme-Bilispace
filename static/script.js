@@ -41,7 +41,7 @@ $(document).ready(function() {
         }
     }, 1000);
 });
-
+//底部以及边栏检测隐藏
 $(window).scroll(function() {
     // 判断客户端样式
     if (isMobile) {
@@ -63,8 +63,10 @@ $(window).scroll(function() {
         if ($(window).scrollTop() > 200) {
             $('#navbottom').fadeIn();
             $("#secondary").fadeIn();
+            $(".post-near").fadeIn();
         } else {
             $('#secondary').fadeOut();
+            $('.post-near').fadeOut();
         }
     } else {
         if ($(window).scrollTop() > 200) {
@@ -75,7 +77,7 @@ $(window).scroll(function() {
     }
 });
 
-//改变图标,想自定义更换图标地址即可
+//改变图标
 var OriginTitile = document.title;
 var titleTime;
 var OriginIco = document.getElementById("tabico").href;
@@ -92,27 +94,17 @@ document.addEventListener('visibilitychange', function() {
         }, 2000);
     }
 });
-//评论区预览
 
-function acpreview() {
-    if ($('#preview-box').is(':visible')) {
-        $('#preview').css({
-            'background-color': '#f4f5f7',
-            'color': '#99a2aa'
+//评论区预览
+$('#textarea').on('change', function () {
+            var md = $('#textarea').val();
+            var html = marked(md);
+            $('#preview-box').html(html);
+            if (!$('#preview-box').is(':visible')) {
+                $('#preview-box').slideToggle();
+            } 
         });
-    } else {
-        $('#preview').css({
-            'background-color': '#00a1d6',
-            'color': '#fff'
-        });
-    }
-    $('#preview-box').slideToggle();
-}
-$('#textarea').on('change', function() {
-    var md = $('#textarea').val();
-    var html = marked(md);
-    $('#preview-box').html(html);
-});
+    
 //noticetext点击跳转百度
 $('#noticetext').click(function() {
     var noticetext = $('#noticetext').html();
