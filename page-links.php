@@ -43,6 +43,7 @@ echo <<<EOF
 				                </a>
 EOF;
 } ?>
+                <div style="clear:both"></div>
                 <div class="post-content" itemprop="articleBody">
                     <?php $this->content(); ?>
                 </div>

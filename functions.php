@@ -1,33 +1,40 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-function themeConfig($form) {
     $themeUrl = $options->rootUrl.'/usr/themes/Bilispace';
+function themeConfig($form) {
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, 'https://i.loli.net/2018/10/26/5bd270b485abb.png', _t('站标'), _t('在这里填入一个图片 URL 地址, 以显示网站图标'));
-    $bannerUrl = new Typecho_Widget_Helper_Form_Element_Text('bannerUrl', NULL, 'https://img.menhood.wang/i/2020/02/12/hd67im.png', _t('站点 banner 地址'), _t('在这里填入一个图片 URL 地址, 以修改banner'));
+    $bannerUrl = new Typecho_Widget_Helper_Form_Element_Text('bannerUrl', NULL, 'https://menhood.320.io/images/201902/bbd0b247711acec3.png', _t('站点 banner 地址'), _t('在这里填入一个图片 URL 地址, 以修改banner'));
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, $themeUrl."/static/images/logo-tv.png" , _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $avatarUrl = new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', NULL, NULL, _t('头像地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 头像,不填为系统邮箱头像'));
     $noticetext = new Typecho_Widget_Helper_Form_Element_Text('noticetext', NULL, NULL, _t('头部公告'), _t('在这里填入公告,不填写默认为一言,建议不超过36个字'));
+    $default_thumb = new Typecho_Widget_Helper_Form_Element_Text('default_thumb', NULL, 'https://img.menhood.wang/i/2020/02/13/maapxg.gif', _t('默认封面'), _t('无封面图时首页显示的图片'));
     
     $form->addInput($favicon);
     $form->addInput($bannerUrl);
     $form->addInput($logoUrl);
     $form->addInput($avatarUrl);
     $form->addInput($noticetext);
+    $form->addInput($default_thumb);
     
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array('ShowRecentPosts' => _t('显示最新文章'),
     'ShowRecentComments' => _t('显示最近回复'),
     'ShowCategory' => _t('显示分类'),
     'ShowArchive' => _t('显示归档'),
-    'ShowTOC' => _t('显示文章目录'),
-    'ShowSmiles' => _t('开启Smiles插件（请保证已正确安装插件，否则会报错，报错去掉勾选即可）')
+    'ShowTOC' => _t('显示文章目录')
     ),
-    array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowTOC','ShowSmiles'), _t('侧边栏显示'));
+    array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowTOC'), _t('侧边栏显示'));
     
     $form->addInput($sidebarBlock->multiMode());
 }
+//缩略图字段以及部分样式调整
+function themeFields($layout) {
+    $thumb = new Typecho_Widget_Helper_Form_Element_Text('thumb', NULL, NULL, _t('自定义缩略图'), _t('封面图地址<style>.wmd-button-row {height:auto;}.OwO span{background:#fff0!important;width:auto!important;height:auto!important;}.OwO .OwO-body{top: 23px!important;width:480px!important;}input[type=text]{width:100%;}</style>'));
+    $layout->addItem($thumb);
+}
 /* 编辑器自定义按钮 */
-//图片上传，其他图床可替换地址：https://img.menhood.wang/
+
+//图片上传
 Typecho_Plugin::factory('admin/write-post.php')->bottom = array('Utils', 'addButton');
 Typecho_Plugin::factory('admin/write-page.php')->bottom = array('Utils', 'addButton');
 class Utils {
@@ -42,12 +49,12 @@ $(function() {
 
     if (wmdf.length > 0) {
         wmdf.after(
-            '<li class="wmd-button" id="wmd-ddns-image-button" style="padding-top:5px;" title="上传图片">上传图片</li>');
+            '<li class="wmd-button" id="wmd-ddns-image-button" style="padding-top:5px;" title="上传图片到图床">上传图片</li>');
     };
     $('#wmd-ddns-image-button').click(function() {
         $('body').append('<div id="upimgpanel">' +
             '<div class="wmd-prompt-background" style="position:absolute;z-index:1000;opacity:0.5;top:0px;left:0px;width:100%;height:954px;"></div>' +
-            '<div class="wmd-prompt-dialog" style="top:150px;width:500px"><div><p><b>上传图片</b> <button onclick="closepanl()" >关闭</button><a href="https://img.menhood.wang/" target="_blank" >打开失败点这里</a></p></div>' +
+            '<div class="wmd-prompt-dialog" style="top:150px;width:500px"><div><p><b>上传图片</b> <a href="https://img.menhood.wang/" target="_blank" >上传失败点这里</a><button onclick="closepanl()" style="float:right;">关闭</button></p></div>' +
             '<iframe width=500 height=600 src="https://img.menhood.wang/" style="border: 1px black;"></iframe></div></div>');
     });
     
@@ -95,7 +102,7 @@ $(function() {
     $('#wmd-addaplayer-button').click(function() {
         $('body').append('<div id="addaplayer">' +
             '<div class="wmd-prompt-background" style="position:absolute;z-index:1000;opacity:0.5;top:0px;left:0px;width:100%;height:954px;"></div>' +
-            '<div class="wmd-prompt-dialog"><div><p><b>添加音乐</b> <button onclick="closeaddaplayer()" >关闭</button></p></div>' +
+            '<div class="wmd-prompt-dialog"><div><p><b>添加音乐</b> <button onclick="closeaddaplayer()" style="float:right;">关闭</button></p></div>' +
             '歌曲/歌单id：<input type="text" id="wyyid" >type：<select id="datatype"><option value ="song">单首</option><option value ="playlist">歌单</option></select><input type="button" value="插入" onclick="addaplayerinfo()" ></div></div>');
     });
     
@@ -155,7 +162,7 @@ $(function() {
     $('#wmd-adddplayer-button').click(function() {
         $('body').append('<div id="adddplayer">' +
             '<div class="wmd-prompt-background" style="position:absolute;z-index:1000;opacity:0.5;top:0px;left:0px;width:100%;height:954px;"></div>' +
-            '<div class="wmd-prompt-dialog"><div><p><b>添加视频</b> <button onclick="closeadddplayer()" >关闭</button></p></div>' +
+            '<div class="wmd-prompt-dialog"><div><p><b>添加视频</b> <button onclick="closeadddplayer()" style="float:right;">关闭</button></p></div>' +
             '直链地址：<input type="text" id="dpurl" >api服务器地址：<input type="text" id="dpapi" value="https://dans.mdh.red/">弹幕：<input type="checkbox" id="dpdm">自动播放：<input type="checkbox" id="dpautoplay">循环：<input type="checkbox" id="dploop"><input type="button" value="插入" onclick="adddplayerinfo()" ></div></div>');
     });
     
@@ -164,6 +171,35 @@ $(function() {
 EOF;
     }
 }
+
+//owo
+Typecho_Plugin::factory('admin/write-post.php')->bottom = array('addowo', 'addButton');
+Typecho_Plugin::factory('admin/write-page.php')->bottom = array('addowo', 'addButton');
+class addowo {
+    public static function addButton(){
+         echo <<<EOF
+<link rel="stylesheet" href="{$options->rootUrl}/usr/themes/Bilispace/static/OwO.min.css">
+<script src="{$options->rootUrl}/usr/themes/Bilispace/static/OwO.min.js"></script>
+<script>
+function closepanl(){
+$('#addowopanel').remove();
+}
+function loadowo(){
+    var OwO_demo = new OwO({logo: "<img src=\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAxQTFRFAAAAm6Kpg4ySmKCoOQPxiAAAAAR0Uk5TACuS9QkrIZAAAABMSURBVHicY2DI/8nAwPT/fwMD/xPpDwz6Dow/GGoZgGiHjY0ewxcbG3mGDzY2/AwfHBj5Gb4s4JJn2FGhq8dQK/2kFqIYrA1sAMgoAA+HGngFiloFAAAAAElFTkSuQmCC\'>",container: document.getElementById("OwO"),target: document.getElementById("text"),api: "{$options->rootUrl}/usr/themes/Bilispace/static/OwO.json",position: "down",width: "100%",maxHeight: "250px"});
+}
+$(function() {
+    var wmdf = $('#wmd-adddplayer-button');
+
+    if (wmdf.length > 0) {
+        wmdf.after('<div id="OwO" class="OwO" style="position: absolute;vertical-align: baseline;display: inline-block;margin: 0;margin-top: 3px;"></div><script>loadowo();<\/script>');
+        
+    };
+});
+</script>
+EOF;
+}
+}
+
 //添加tip
 Typecho_Plugin::factory('admin/write-post.php')->bottom = array('addtip', 'addButton');
 Typecho_Plugin::factory('admin/write-page.php')->bottom = array('addtip', 'addButton');
@@ -204,6 +240,7 @@ $(function() {
 EOF;
     }
 }
+
 //检测移动端
 function isMobile(){
 	    // 如果有HTTP_X_WAP_PROFILE则一定是移动设备
@@ -322,4 +359,54 @@ echo $lvhtml.' -476px\'></span>';
 }elseif ($rbq>=80) {
 echo $lvhtml.' -540px\'></span>';
 }
+}
+
+//替换表情
+function rowo($content) {
+    $jsonadr = Helper::options()->themeUrl.'/static/OwO.json';
+    $json = file_get_contents($jsonadr);
+    $owoarr = json_decode($json,true);
+    $emdata = [];
+    foreach ($owoarr as $v1) {
+        foreach ($v1 as $v2) {
+            foreach ($v2 as $v3) {
+                array_push($emdata,$v3);
+            }
+        }
+    }
+
+    //截取指定两个字符之间的字符串
+    function cut($begin,$end,$str) {
+        $b = mb_strpos($str,$begin) + mb_strlen($begin);
+        $e = mb_strpos($str,$end) - $b;
+        return mb_substr($str,$b,$e);
+    }
+    //匹配占位符
+    preg_match_all("/:[a-z,A-Z,0-9]+:/", $content, $match);
+
+    foreach ($match[0] as $mkey => $mvalue) {
+        $text = cut(":",":",$mvalue);
+        foreach ($emdata as $key => $value) {
+            if ($text === $value['text']) {
+                $content = str_replace($mvalue,$value['icon'],$content) ;
+            }
+        }
+    }
+    echo $content;
+}
+
+//评论加@
+function get_comment_at($coid)
+{
+    $db   = Typecho_Db::get();
+    $prow = $db->fetchRow($db->select('parent')->from('table.comments')->where('coid = ? AND status = ?', $coid, 'approved'));
+    $parent = $prow['parent'];
+    if ($parent != "0") {
+        $arow = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ? AND status = ?', $parent, 'approved'));
+        $author = $arow['author'];
+        $href   = '<a  href="#comment-' . $parent . '">@' . $author . '</a>';
+        echo $href;
+    } else {
+        echo '';
+    }
 }

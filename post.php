@@ -14,10 +14,10 @@
             </li> 
         </ul>
         <div class="post-content" id="postcontent" itemprop="articleBody">
-            <?php $this->content(); ?>
+            <?php rowo($this->content); ?>
         </div>
         <p itemprop="keywords" class="tags">
-            <?php $this->tags('  ', true, 'none'); ?>
+            <?php $this->tags('  ', true, '木有标签'); ?>
         </p>
     </article>
     <ul class="post-near">

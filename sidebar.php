@@ -8,7 +8,7 @@
             <button type="submit" class="submit btn"><?php _e('搜索'); ?></button>
         </form>
     </div>
-    
+    <?php if(!$this->is('page'))://判断是否为timeline页面 ?>
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowTOC', $this->options->sidebarBlock ) ): ?>
         <?php if (!$this->is('index')):?>
     <section class="widget" id="toc" >
@@ -36,7 +36,8 @@
 	    <?php endif; ?>
 	    
     <?php endif; ?>
-    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
+    
+    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)): //判断是否开启最新文章模块?>
     <section class="widget">
 		<h3 class="widget-title"><?php _e('最新文章'); ?></h3>
         <ul class="widget-list">
@@ -44,7 +45,8 @@
             ->parse('<li><a href="{permalink}">{title}</a></li>'); ?>
         </ul>
     </section>
-    <?php endif; ?>
+    <?php endif; //判断是否开启最新文章模块?>
+    <?php endif; //判断是否为timeline页面?>
 
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
     <section class="widget">

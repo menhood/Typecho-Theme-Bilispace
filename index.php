@@ -4,7 +4,7 @@
  * 
  * @package Typecho Bilisapce Theme 
  * @author Menhood
- * @version 1
+ * @version 2020-2-14
  * @link http://menhood.wang
  */
 
@@ -21,12 +21,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <a href="<?php $this->permalink() ?>">
             <div class="thumb">
             <div class="imgmask"></div>
-	        <img src="
-	        <?php if ($this->fields->thumb): ?>
+	        <img data-original="<?php if ($this->fields->thumb): ?>
 	        <?php $this->fields->thumb();?>
 	        <?php else:?>
-	        https://img.menhood.wang/i/2020/02/13/maapxg.gif
-	        <?php endif;?>" />
+            <?php $this->options->default_thumb();?>
+	        <?php endif;?>" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" class="lazyload"/>
 	        </div>
 	        </a>
 	        <div class="index-post">
@@ -70,11 +69,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
         <a href="<?php $this->permalink() ?>">
         <div class="card-thumb">
-            <img src="<?php if ($this->fields->thumb): ?>
+            <img data-original="<?php if ($this->fields->thumb): ?>
 	        <?php $this->fields->thumb();?>
 	        <?php else:?>
-	        https://img.menhood.wang/i/2020/02/11/krwtlq.jpg
-	        <?php endif;?>" />
+            <?php $this->options->default_thumb();?>
+	        <?php endif;?>" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" class="lazyload"/>
         </div>
         </a>
         <div class="card-desc">

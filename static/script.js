@@ -127,3 +127,6 @@ $("img.lazyload").lazyload({
 
 //点击标题展开收起评论
 $("#comments-title").click(function(){$('.comment-children').slideToggle();});
+//点击标题展开收起归档
+function pltoggle(cid){$('#'+cid).slideToggle()};
+

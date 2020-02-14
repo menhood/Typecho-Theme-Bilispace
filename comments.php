@@ -28,7 +28,7 @@
                                         ?>
                             </span>
                             <div class=" comment-content">
-                                <?php $comments->content();
+                                <?php get_comment_at($comments->coid);$comments->content();
                                 ?>
                             </div>
                             <div class="comment-meta">

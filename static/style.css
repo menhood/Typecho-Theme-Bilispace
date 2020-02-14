@@ -84,14 +84,14 @@ pre {
     overflow:hidden;
 }
 code, pre {
-    color: #C13;
-    margin: 0 2px;
-    border-radius: 2px;
-    font-family:"Roboto Mono", Monaco, courier, monospace;
-    font-weight: 600;
-    background-color: #F0F0EC;
-    -webkit-font-smoothing: initial;
-    -moz-osx-font-smoothing: initial;
+    font-family: Menlo,Bitstream Vera Sans Mono,DejaVu Sans Mono,Monaco,Consolas,monospace;
+    font-size: 13px;
+    margin: 0 3px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background-color: #4a4a4a;
+    color: white;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.15), 1px 1px 8px rgba(0, 0, 0, 0.15);
 }
 blockquote {
     margin: 1.4em 0;
@@ -787,6 +787,12 @@ p.danger, p.tip, p.warning {
     padding: 0;
     margin: 0;
 }
+.comment-content a{
+    color: #00a1d6;
+}
+.comment-content a:hover{
+    color: #f25d8e;
+}
 .comment-meta {
     color: #99a2aa;
     line-height: 26px;
@@ -961,9 +967,11 @@ p.danger, p.tip, p.warning {
 .categorys-title {
     font-size: 16px;
     font-weight: 700;
+    cursor: url(images/OW-Hand.cur),auto!important;
 }
 .post-lists {
     padding: 8px;
+    display: none;
 }
 .item-title a {
     text-decoration: none;

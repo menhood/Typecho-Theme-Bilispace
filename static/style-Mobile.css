@@ -648,9 +648,18 @@ p.danger, p.tip, p.warning {
 }
 .comment-content {
 }
+.comment-content img{
+    max-height: 32px;
+}
 .comment-content p {
     padding: 0;
     margin: 0;
+}
+.comment-content a{
+    color: #00a1d6;
+}
+.comment-content a:hover{
+    color: #f25d8e;
 }
 .comment-meta {
     color: #99a2aa;
