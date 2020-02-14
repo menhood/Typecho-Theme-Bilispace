@@ -5,7 +5,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline"><a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
         <div id="postcontent" class="post-content" itemprop="articleBody">
-            <?php rowo($this->content); ?>
+            <?php $this->content(); ?>
         </div>
     </article>
     <?php $this->need('comments.php'); ?>

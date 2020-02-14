@@ -79,7 +79,13 @@
 <?php if(isMobile()): ?><div style="width:100%;height:80px"></div><?php endif;?>
 <!--统计代码-->
 <script>
-//自行添加
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9d0d82652d72c7eac67ff1cec8e01247";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 <?php $this->footer(); ?>

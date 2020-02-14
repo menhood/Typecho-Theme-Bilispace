@@ -14,7 +14,7 @@
             </li> 
         </ul>
         <div class="post-content" id="postcontent" itemprop="articleBody">
-            <?php rowo($this->content); ?>
+            <?php $this->content(); ?>
         </div>
         <p itemprop="keywords" class="tags">
             <?php $this->tags('  ', true, '木有标签'); ?>

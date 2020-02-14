@@ -895,7 +895,7 @@ p.danger, p.tip, p.warning {
     max-width: 545px;
     transition: 0s;
     padding: 5px 10px;
-    margin: 0px 0px 10px 65px;
+    /*margin: 0px 0px 10px 65px;*/
     line-height: normal;
     position: relative;
 }

@@ -3,9 +3,6 @@
 <html class="no-js">
 <head>
     <meta charset="<?php $this->options->charset(); ?>">
-    <?php if($_SERVER['HTTP_HOST'] == 'a.menhood.wang') { ?>
-    <meta name="robots" content="noindex,nofollow" />
-    <?php break;}//检测来源域名，如果不是博客域名将停止渲染 ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
