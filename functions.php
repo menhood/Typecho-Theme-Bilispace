@@ -2,12 +2,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     $themeUrl = $options->rootUrl.'/usr/themes/Bilispace';
 function themeConfig($form) {
-    $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, 'https://i.loli.net/2018/10/26/5bd270b485abb.png', _t('站标'), _t('在这里填入一个图片 URL 地址, 以显示网站图标'));
-    $bannerUrl = new Typecho_Widget_Helper_Form_Element_Text('bannerUrl', NULL, 'https://menhood.320.io/images/201902/bbd0b247711acec3.png', _t('站点 banner 地址'), _t('在这里填入一个图片 URL 地址, 以修改banner'));
-    $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, $themeUrl."/static/images/logo-tv.png" , _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
+        $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, 'https://i.loli.net/2018/10/26/5bd270b485abb.png', _t('站标'), _t('在这里填入一个图片 URL 地址, 以显示网站图标'));
+    $bannerUrl = new Typecho_Widget_Helper_Form_Element_Text('bannerUrl', NULL, 'https://img.menhood.wang/images/201902/bbd0b247711acec3.png', _t('站点 banner 地址'), _t('在这里填入一个图片 URL 地址, 以修改banner,1280x200'));
+    $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, $options->rootUrl."/usr/themes/Bilispace/static/images/logo-tv.png" , _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
     $avatarUrl = new Typecho_Widget_Helper_Form_Element_Text('avatarUrl', NULL, NULL, _t('头像地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 头像,不填为系统邮箱头像'));
     $noticetext = new Typecho_Widget_Helper_Form_Element_Text('noticetext', NULL, NULL, _t('头部公告'), _t('在这里填入公告,不填写默认为一言,建议不超过36个字'));
     $default_thumb = new Typecho_Widget_Helper_Form_Element_Text('default_thumb', NULL, 'https://img.menhood.wang/i/2020/02/13/maapxg.gif', _t('默认封面'), _t('无封面图时首页显示的图片'));
+    $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, '', _t('备案号'), _t('备案号，没有可不填'));
     
     $form->addInput($favicon);
     $form->addInput($bannerUrl);
@@ -15,6 +16,7 @@ function themeConfig($form) {
     $form->addInput($avatarUrl);
     $form->addInput($noticetext);
     $form->addInput($default_thumb);
+    $form->addInput($beian);	
     
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array('ShowRecentPosts' => _t('显示最新文章'),
