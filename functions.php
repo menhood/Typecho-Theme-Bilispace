@@ -105,7 +105,7 @@ $(function() {
         $('body').append('<div id="addaplayer">' +
             '<div class="wmd-prompt-background" style="position:absolute;z-index:1000;opacity:0.5;top:0px;left:0px;width:100%;height:954px;"></div>' +
             '<div class="wmd-prompt-dialog"><div><p><b>添加音乐</b> <button onclick="closeaddaplayer()" style="float:right;">关闭</button></p></div>' +
-            '歌曲/歌单id：<input type="text" id="wyyid" >type：<select id="datatype"><option value ="song">单首</option><option value ="playlist">歌单</option></select><input type="button" value="插入" onclick="addaplayerinfo()" ></div></div>');
+            '歌曲/歌单id：<input type="text" id="wyyid" >type：<select id="datatype"><option value ="single">单首</option><option value ="playlist">歌单</option></select><input type="button" value="插入" onclick="addaplayerinfo()" ></div></div>');
     });
     
 });
